@@ -1,0 +1,1685 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="Free Online Spin Wheel for Teachers, Giveaways, Shops &amp; Social Media. Create custom spinning wheels for random selection, name picking, and decision making.">
+  <meta name="keywords" content="spin wheel, random picker, name picker, giveaway wheel, classroom spinner, decision maker">
+  <meta name="author" content="Spin For Win">
+  <meta name="robots" content="index, follow">
+  <title>Spin For Win - Free Online Spin Wheel for Teachers, Giveaways &amp; More</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+    h1, h2, h3, h4, h5, h6, .font-display {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* ============================================
+       MOBILE RESPONSIVENESS FIX
+       ============================================ */
+    
+    /* Prevent horizontal overflow on all containers */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix for main app container */
+    #app {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Ensure all sections stay within viewport */
+    section, header, footer, div {
+      max-width: 100%;
+    }
+    
+    /* Prevent text from causing overflow */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    /* Make all images responsive */
+    img, svg, canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Ensure buttons don't overflow */
+    button {
+      max-width: 100%;
+      word-wrap: break-word;
+      white-space: normal;
+      min-height: 44px;
+    }
+    
+    /* Input fields responsive */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      max-width: 100%;
+      width: 100%;
+      font-size: 16px;
+    }
+    
+    /* MOBILE BREAKPOINT */
+    @media (max-width: 640px) {
+      .font-display {
+        word-break: break-word;
+      }
+      
+      /* Hero headline responsive sizing */
+      #hero-headline {
+        font-size: 1.75rem !important;
+        line-height: 1.2;
+        padding: 0 1rem;
+      }
+      
+      /* Subtext responsive sizing */
+      #hero-subtext {
+        font-size: 0.95rem !important;
+        line-height: 1.5;
+        padding: 0 1rem;
+      }
+      
+      /* Grid fixes */
+      .grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .grid.grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem;
+      }
+      
+      .grid.lg\\:grid-cols-4,
+      .grid.lg\\:grid-cols-3,
+      .grid.md\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+      
+      /* Padding adjustments */
+      .p-8 {
+        padding: 1.5rem !important;
+      }
+      
+      .p-6 {
+        padding: 1rem !important;
+      }
+      
+      .px-8 {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+      
+      .py-16 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+      }
+      
+      .py-24 {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+      }
+      
+      /* Items list mobile fix */
+      #items-list > div {
+        padding: 0.75rem !important;
+        min-height: 44px;
+      }
+      
+      #items-list button {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.5rem;
+      }
+      
+      /* Template buttons */
+      .grid-cols-2.sm\\:grid-cols-2.lg\\:grid-cols-4 button {
+        font-size: 0.75rem;
+        padding: 0.75rem 0.5rem;
+      }
+      
+      .grid-cols-2.sm\\:grid-cols-2.lg\\:grid-cols-4 button > div:first-child {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+      }
+      
+      /* Footer fix */
+      footer .grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      footer .flex {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      /* Share section */
+      .py-12.sm\\:py-16 button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+      
+      .py-12.sm\\:py-16 h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+      }
+      
+      /* FAQ section */
+      #faq-home .bg-gray-50 {
+        padding: 0.5rem;
+      }
+      
+      #faq-home button {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .faq-answer {
+        font-size: 0.875rem;
+      }
+      
+      /* Prevent iOS zoom on input focus */
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+      
+      /* Result display */
+      #result-display {
+        width: 95%;
+        max-width: 95%;
+      }
+      
+      #winner-text {
+        font-size: 1.5rem;
+        word-break: break-word;
+      }
+      
+      /* Spinning animation optimization */
+      .spinning {
+        will-change: transform;
+      }
+    }
+    
+    /* TABLET BREAKPOINT */
+    @media (min-width: 641px) and (max-width: 768px) {
+      #hero-headline {
+        font-size: 2.25rem !important;
+      }
+      
+      #hero-subtext {
+        font-size: 1.125rem !important;
+      }
+    }
+    
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .grid.lg\\:grid-cols-4,
+      .grid.lg\\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .group:hover > div {
+        position: relative;
+        width: 100%;
+        left: 0;
+        margin-top: 0.5rem;
+      }
+    }
+    
+    /* Safe area padding for notched devices */
+    @supports (padding: max(0px)) {
+      body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+      }
+      
+      header {
+        padding-top: max(0px, env(safe-area-inset-top));
+      }
+    }
+    
+    /* Reduce animations on low-performance devices */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Final safeguard against horizontal scroll */
+    body, html, #app {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      position: relative;
+    }
+    
+    /* Max-width containers padding */
+    .max-w-7xl,
+    .max-w-4xl,
+    .max-w-3xl,
+    .max-w-2xl {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Items and history list scrolling */
+    #items-list,
+    #spin-history {
+      max-height: 250px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Gradient text fix */
+    .gradient-text {
+      display: inline-block;
+      word-break: keep-all;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .wheel-container {
+      filter: drop-shadow(0 25px 50px rgba(102, 126, 234, 0.3));
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(var(--spin-degrees)); }
+    }
+    .spinning {
+      animation: spin var(--spin-duration) cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.25);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+    .btn-primary:active {
+      transform: scale(0.95);
+    }
+    button {
+      transition: transform 0.15s ease;
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.6); }
+    }
+    .feature-icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .page-section {
+      display: none;
+    }
+    .page-section.active {
+      display: block;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+    .mobile-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gray-50 text-gray-900">
+  <div id="app" class="h-full overflow-auto w-full"><!-- Header Navigation -->
+   <header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-16"><!-- Logo --> <a href="#" onclick="playRelaxingClick(); navigateTo('home')" onmouseenter="playHoverSound()" class="flex items-center space-x-2">
+       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center"><span class="text-white text-xl">🌀</span>
+       </div><span id="site-title" class="font-display font-bold text-xl text-gray-900">Spin For Win</span> </a> <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-8"><a href="#" onclick="playRelaxingClick(); navigateTo('home')" onmouseenter="playHoverSound()" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Home</a>
+       <div class="relative group"><button class="nav-link text-gray-700 hover:text-gray-900 font-medium flex items-center" onmouseenter="playHoverSound()"> Use Cases 
+         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+         <div class="py-2"><a href="#" onclick="playRelaxingClick(); navigateTo('teachers')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">👨‍🏫 Teachers &amp; Educators</a> <a href="#" onclick="playRelaxingClick(); navigateTo('classroom')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">🏫 Classroom Activities</a> <a href="#" onclick="playRelaxingClick(); navigateTo('giveaways')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">🎁 Giveaways &amp; Contests</a> <a href="#" onclick="playRelaxingClick(); navigateTo('shops')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">🛍️ Shops &amp; Promotions</a> <a href="#" onclick="playRelaxingClick(); navigateTo('influencers')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">📱 YouTubers &amp; Influencers</a> <a href="#" onclick="playRelaxingClick(); navigateTo('decision')" onmouseenter="playHoverSound()" class="block px-4 py-3 hover:bg-gray-50 text-gray-700">🧠 Decision Making</a>
+         </div>
+        </div>
+       </div><a href="#" onclick="playRelaxingClick(); navigateTo('name-picker')" onmouseenter="playHoverSound()" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Name Picker</a> <a href="#" onclick="playRelaxingClick(); navigateTo('about')" onmouseenter="playHoverSound()" class="nav-link text-gray-700 hover:text-gray-900 font-medium">About</a> <a href="#" onclick="playRelaxingClick(); navigateTo('contact')" onmouseenter="playHoverSound()" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+      </div><!-- Mobile Menu Button --> <button onclick="playRelaxingClick(); toggleMobileMenu()" onmouseenter="playHoverSound()" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+       </svg></button>
+     </div>
+    </nav><!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-50 lg:hidden">
+     <div class="flex justify-between items-center p-4 border-b"><span class="font-display font-bold text-xl">Menu</span> <button onclick="playRelaxingClick(); toggleMobileMenu()" onmouseenter="playHoverSound()" class="p-2 rounded-lg hover:bg-gray-100">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+       </svg></button>
+     </div>
+     <div class="p-4 space-y-2 overflow-auto" style="max-height: calc(100% - 60px);"><a href="#" onclick="playRelaxingClick(); navigateTo('home'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 font-medium">🏠 Home</a>
+      <div class="border-t my-2"></div>
+      <p class="px-4 py-2 text-sm text-gray-500 font-medium">Use Cases</p><a href="#" onclick="playRelaxingClick(); navigateTo('teachers'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">👨‍🏫 Teachers &amp; Educators</a> <a href="#" onclick="playRelaxingClick(); navigateTo('classroom'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">🏫 Classroom Activities</a> <a href="#" onclick="playRelaxingClick(); navigateTo('giveaways'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">🎁 Giveaways &amp; Contests</a> <a href="#" onclick="playRelaxingClick(); navigateTo('shops'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">🛍️ Shops &amp; Promotions</a> <a href="#" onclick="playRelaxingClick(); navigateTo('influencers'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">📱 YouTubers &amp; Influencers</a> <a href="#" onclick="playRelaxingClick(); navigateTo('decision'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">🧠 Decision Making</a>
+      <div class="border-t my-2"></div><a href="#" onclick="playRelaxingClick(); navigateTo('name-picker'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 font-medium">🔢 Name Picker</a> <a href="#" onclick="playRelaxingClick(); navigateTo('about'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 font-medium">ℹ️ About Us</a> <a href="#" onclick="playRelaxingClick(); navigateTo('contact'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 font-medium">📧 Contact</a> <a href="#" onclick="playRelaxingClick(); navigateTo('privacy'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">🔒 Privacy Policy</a> <a href="#" onclick="playRelaxingClick(); navigateTo('terms'); toggleMobileMenu();" onmouseenter="playHoverSound()" class="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700">📜 Terms &amp; Conditions</a>
+     </div>
+    </div>
+   </header><!-- ==================== ABOUT US PAGE ==================== -->
+   <section id="page-about" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-purple-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">About Spin For Win</h1>
+      <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg space-y-6">
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Welcome to Spin For Win!</h2>
+        <p class="text-gray-700 leading-relaxed">Spin For Win is a free, fun, and entertaining online platform designed to help you make decisions through the power of random selection. Whether you're a teacher looking to pick students fairly, a content creator running giveaways, or someone who just can't decide what to eat for dinner—our spinning wheel is here to help!</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">What We Offer</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Our platform provides:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+         <li>A fully customizable spinning wheel with unlimited items</li>
+         <li>Fair and transparent random selection algorithm</li>
+         <li>Pre-made templates for teachers, classrooms, giveaways, and more</li>
+         <li>100% free to use with no hidden fees or subscriptions</li>
+         <li>No sign-up or registration required</li>
+        </ul>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Entertainment Only</h2>
+        <p class="text-gray-700 leading-relaxed">Please note that Spin For Win is designed purely for entertainment and decision-making purposes. This website does not involve real money gambling, betting, or any form of monetary transactions. We do not promise or guarantee any real money rewards, prizes, or financial gains.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
+        <p class="text-gray-700 leading-relaxed">We believe that making decisions should be fun, fair, and stress-free. Our mission is to provide a simple yet powerful tool that brings joy and excitement to everyday choices, classroom activities, social media engagement, and promotional campaigns.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Who Uses Spin For Win?</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+         <li><strong>Teachers &amp; Educators:</strong> Randomly select students for activities and make learning interactive</li>
+         <li><strong>Content Creators:</strong> Pick giveaway winners and engage with your audience</li>
+         <li><strong>Businesses:</strong> Run promotional campaigns and customer engagement activities</li>
+         <li><strong>Individuals:</strong> Make everyday decisions easier—from choosing dinner to planning weekend activities</li>
+        </ul>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Fair &amp; Transparent</h2>
+        <p class="text-gray-700 leading-relaxed">We take fairness seriously. Our random selection algorithm ensures that every item on your wheel has an equal chance of being selected. There is no manipulation, bias, or hidden algorithms just pure, honest randomness.</p>
+       </div>
+       <div class="border-t pt-6">
+        <p class="text-gray-700 leading-relaxed">Thank you for choosing Spin For Win! We hope you enjoy using our platform as much as we enjoyed creating it. If you have any questions or feedback, feel free to reach out through our <a href="#" onclick="playRelaxingClick(); navigateTo('contact')" class="text-purple-600 hover:text-purple-700 font-medium">Contact page</a>.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== CONTACT US PAGE ==================== -->
+   <section id="page-contact" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-green-50 to-blue-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">Contact Us</h1>
+      <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg">
+       <div class="text-center mb-8">
+        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+         </svg>
+        </div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">Get in Touch</h2>
+        <p class="text-gray-700 leading-relaxed">We'd love to hear from you! Whether you have questions, feedback, suggestions, or just want to say hello, feel free to reach out.</p>
+       </div>
+       <div class="space-y-6">
+        <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 text-center">
+         <h3 class="font-semibold text-gray-900 mb-3">Email Us</h3><a href="mailto:spinforwin11@gmail.com" class="text-purple-600 hover:text-purple-700 font-medium text-lg">spinforwin11@gmail.com</a>
+         <p class="text-gray-600 text-sm mt-2">Click to send us an email directly</p>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-semibold text-gray-900 mb-4">What Can We Help You With?</h3>
+         <ul class="space-y-2 text-gray-700">
+          <li class="flex items-start"><span class="text-purple-600 mr-2">✓</span> <span>General inquiries about Spin For Win</span></li>
+          <li class="flex items-start"><span class="text-purple-600 mr-2">✓</span> <span>Technical support and bug reports</span></li>
+          <li class="flex items-start"><span class="text-purple-600 mr-2">✓</span> <span>Feature requests and suggestions</span></li>
+          <li class="flex items-start"><span class="text-purple-600 mr-2">✓</span> <span>Partnership and collaboration opportunities</span></li>
+          <li class="flex items-start"><span class="text-purple-600 mr-2">✓</span> <span>Feedback on your experience</span></li>
+         </ul>
+        </div>
+        <div class="border-t pt-6">
+         <h3 class="font-display text-xl font-semibold text-gray-900 mb-4">Response Time</h3>
+         <p class="text-gray-700 leading-relaxed">We strive to respond to all inquiries within 24-48 hours during business days. Please note that response times may be longer during weekends and holidays.</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-6">
+         <h3 class="font-semibold text-gray-900 mb-2">Before You Contact Us</h3>
+         <p class="text-gray-700 text-sm">Please check our <a href="#" onclick="playRelaxingClick(); navigateTo('home'); setTimeout(() => document.getElementById('faq-home').scrollIntoView({behavior: 'smooth'}), 100)" class="text-purple-600 hover:text-purple-700 font-medium">FAQ section</a> to see if your question has already been answered. This can help you get the information you need even faster!</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== PRIVACY POLICY PAGE ==================== -->
+   <section id="page-privacy" class="page-section">
+    <div class="py-16 lg:py-24 bg-gray-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">Privacy Policy</h1>
+      <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg space-y-8">
+       <div>
+        <p class="text-gray-600 text-sm mb-4"><strong>Effective Date:</strong> January 2025</p>
+        <p class="text-gray-700 leading-relaxed">At Spin For Win, we respect your privacy and are committed to protecting any information you share with us. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">1. Information We Collect</h2>
+        <h3 class="font-semibold text-gray-900 mb-2">Personal Information</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">We do not collect any personal information unless you voluntarily provide it to us (for example, when you contact us via email). This may include your name and email address.</p>
+        <h3 class="font-semibold text-gray-900 mb-2">Non-Personal Information</h3>
+        <p class="text-gray-700 leading-relaxed">We may collect non-personal, anonymous data such as browser type, device information, IP address, and pages visited to improve our website's performance and user experience.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">2. Cookies</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Our website uses cookies to enhance your browsing experience. Cookies are small text files stored on your device that help us understand how you use our site.</p>
+        <p class="text-gray-700 leading-relaxed"><strong>What cookies do we use?</strong></p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mt-2">
+         <li><strong>Essential Cookies:</strong> Necessary for the website to function properly</li>
+         <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website</li>
+         <li><strong>Advertising Cookies:</strong> Used by third-party advertising services like Google AdSense</li>
+        </ul>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">3. Google AdSense</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Spin For Win uses Google AdSense to display advertisements. Google AdSense may use cookies and web beacons to collect anonymous information about your visits to our website and other websites in order to provide advertisements about goods and services of interest to you.</p>
+        <p class="text-gray-700 leading-relaxed mb-4"><strong>Third-Party Vendors:</strong> Google and other third-party vendors may use cookies to serve ads based on your prior visits to our website or other websites. This data is collected anonymously and does not include personally identifiable information.</p>
+        <p class="text-gray-700 leading-relaxed">You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-700 font-medium">Google Ads Settings</a>.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">4. How We Use Your Information</h2>
+        <p class="text-gray-700 leading-relaxed">Any information we collect is used to:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mt-2">
+         <li>Improve our website's functionality and user experience</li>
+         <li>Respond to your inquiries and provide customer support</li>
+         <li>Analyze website traffic and usage patterns</li>
+         <li>Display relevant advertisements through Google AdSense</li>
+        </ul>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">5. Data Security</h2>
+        <p class="text-gray-700 leading-relaxed">We take reasonable measures to protect any information you provide to us. However, please note that no method of transmission over the internet or electronic storage is 100% secure.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">6. Third-Party Links</h2>
+        <p class="text-gray-700 leading-relaxed">Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review their privacy policies before providing any personal information.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">7. Children's Privacy</h2>
+        <p class="text-gray-700 leading-relaxed">Spin For Win is intended for general audiences and does not knowingly collect personal information from children under the age of 13. If you believe we have inadvertently collected such information, please contact us immediately so we can remove it.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">8. Changes to This Privacy Policy</h2>
+        <p class="text-gray-700 leading-relaxed">We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page with a revised effective date.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">9. Contact Us</h2>
+        <p class="text-gray-700 leading-relaxed">If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:spinforwin11@gmail.com" class="text-purple-600 hover:text-purple-700 font-medium">spinforwin11@gmail.com</a>.</p>
+       </div>
+       <div class="border-t pt-6">
+        <p class="text-gray-600 text-sm">By using Spin For Win, you agree to the terms outlined in this Privacy Policy.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== TERMS & CONDITIONS PAGE ==================== -->
+   <section id="page-terms" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-purple-50 to-pink-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">Terms &amp; Conditions</h1>
+      <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg space-y-8">
+       <div>
+        <p class="text-gray-600 text-sm mb-4"><strong>Effective Date:</strong> January 2025</p>
+        <p class="text-gray-700 leading-relaxed">Welcome to Spin For Win! By accessing and using this website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using our services.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
+        <p class="text-gray-700 leading-relaxed">By using Spin For Win, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use our website.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">2. Entertainment Purpose Only</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Spin For Win is designed purely for entertainment, decision-making, and educational purposes. This website does not involve real money gambling, betting, or any form of financial transactions.</p>
+        <p class="text-gray-700 leading-relaxed"><strong>Important:</strong> We do not promise, guarantee, or provide any real money rewards, prizes, or financial gains. Any "winnings" displayed on the spinning wheel are for entertainment purposes only and have no real-world monetary value unless explicitly stated by the user organizing the activity (e.g., a promotional giveaway).</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">3. Use of the Website</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">You agree to use Spin For Win only for lawful purposes and in accordance with these Terms and Conditions. You must not:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+         <li>Use the website in any way that violates any applicable laws or regulations</li>
+         <li>Engage in any conduct that could damage, disable, or impair the website</li>
+         <li>Attempt to gain unauthorized access to any part of the website or its servers</li>
+         <li>Use the website for any fraudulent or malicious activities</li>
+        </ul>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">4. No Guarantees</h2>
+        <p class="text-gray-700 leading-relaxed">Spin For Win is provided "as is" without any warranties, express or implied. We do not guarantee that the website will be error-free, uninterrupted, or free from viruses or other harmful components. Your use of the website is at your own risk.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">5. User Responsibility</h2>
+        <p class="text-gray-700 leading-relaxed">You are solely responsible for any content you add to the spinning wheel (such as names, items, or prizes). We do not monitor, verify, or control the content users add to their wheels. Please ensure that your content is appropriate and does not violate any laws or rights of others.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">6. Intellectual Property</h2>
+        <p class="text-gray-700 leading-relaxed">All content on Spin For Win, including but not limited to text, graphics, logos, images, and software, is the property of Spin For Win or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works from any content on this website without our express written permission.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">7. Third-Party Advertisements</h2>
+        <p class="text-gray-700 leading-relaxed">Spin For Win may display third-party advertisements, including those served by Google AdSense. We are not responsible for the content or accuracy of these advertisements. Your interactions with advertisers are solely between you and the advertiser.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">8. Limitation of Liability</h2>
+        <p class="text-gray-700 leading-relaxed">To the fullest extent permitted by law, Spin For Win and its owners, operators, and affiliates shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of or inability to use the website.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">9. Modifications and Discontinuation</h2>
+        <p class="text-gray-700 leading-relaxed">We reserve the right to modify, suspend, or discontinue Spin For Win (or any part of it) at any time without prior notice. We may also update these Terms and Conditions at our discretion. Continued use of the website after any changes constitutes your acceptance of the new terms.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">10. Privacy Policy</h2>
+        <p class="text-gray-700 leading-relaxed">Your use of Spin For Win is also governed by our <a href="#" onclick="playRelaxingClick(); navigateTo('privacy')" class="text-purple-600 hover:text-purple-700 font-medium">Privacy Policy</a>. Please review it to understand how we collect, use, and protect your information.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">11. Governing Law</h2>
+        <p class="text-gray-700 leading-relaxed">These Terms and Conditions are governed by and construed in accordance with applicable laws. Any disputes arising from your use of Spin For Win shall be resolved in the appropriate courts.</p>
+       </div>
+       <div>
+        <h2 class="font-display text-2xl font-semibold text-gray-900 mb-4">12. Contact Information</h2>
+        <p class="text-gray-700 leading-relaxed">If you have any questions or concerns about these Terms and Conditions, please contact us at <a href="mailto:spinforwin11@gmail.com" class="text-purple-600 hover:text-purple-700 font-medium">spinforwin11@gmail.com</a>.</p>
+       </div>
+       <div class="border-t pt-6">
+        <p class="text-gray-600 text-sm">By using Spin For Win, you acknowledge that you have read, understood, and agree to these Terms and Conditions. Thank you for using our platform responsibly!</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== NAME PICKER PAGE ==================== -->
+   <section id="page-name-picker" class="page-section">
+    <div class="py-16 lg:py-24 bg-white">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Random Name Picker</h1>
+      <p class="text-xl text-gray-600 mb-12">Coming Soon! A dedicated name picker tool for classrooms and events.</p><button onclick="playRelaxingClick(); navigateTo('home')" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> ← Back to Spin Wheel </button>
+     </div>
+    </div>
+   </section><!-- ==================== TEACHERS PAGE ==================== -->
+   <section id="page-teachers" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">👨‍🏫 For Teachers &amp; Educators</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Make your classroom more engaging with fair random selection!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Perfect for:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-blue-600 mr-3 text-xl">✓</span><span>Picking students for presentations or activities</span></li>
+        <li class="flex items-start"><span class="text-blue-600 mr-3 text-xl">✓</span><span>Creating random groups for projects</span></li>
+        <li class="flex items-start"><span class="text-blue-600 mr-3 text-xl">✓</span><span>Selecting volunteers fairly</span></li>
+        <li class="flex items-start"><span class="text-blue-600 mr-3 text-xl">✓</span><span>Making learning fun and interactive</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('teachers'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Teacher Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== CLASSROOM PAGE ==================== -->
+   <section id="page-classroom" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-green-50 to-emerald-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center"> Classroom Activities</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Engage students with interactive games and activities!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Use Cases:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-green-600 mr-3 text-xl">✓</span><span>Group assignments and team formation</span></li>
+        <li class="flex items-start"><span class="text-green-600 mr-3 text-xl">✓</span><span>Quiz question selection</span></li>
+        <li class="flex items-start"><span class="text-green-600 mr-3 text-xl">✓</span><span>Reward and prize distribution</span></li>
+        <li class="flex items-start"><span class="text-green-600 mr-3 text-xl">✓</span><span>Interactive learning games</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('classroom'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Classroom Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== GIVEAWAYS PAGE ==================== -->
+   <section id="page-giveaways" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-pink-50 to-rose-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">🎁 Giveaways &amp; Contests</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Run fair and exciting prize drawings!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Perfect for:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-pink-600 mr-3 text-xl">✓</span><span>Social media giveaways</span></li>
+        <li class="flex items-start"><span class="text-pink-600 mr-3 text-xl">✓</span><span>Prize drawings at events</span></li>
+        <li class="flex items-start"><span class="text-pink-600 mr-3 text-xl">✓</span><span>Contest winner selection</span></li>
+        <li class="flex items-start"><span class="text-pink-600 mr-3 text-xl">✓</span><span>Live stream giveaways</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('giveaway'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Giveaway Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== SHOPS PAGE ==================== -->
+   <section id="page-shops" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-orange-50 to-amber-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">🛍️ Shops &amp; Promotions</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Create engaging discount wheels for customers!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Business Uses:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-orange-600 mr-3 text-xl">✓</span><span>Discount wheel promotions</span></li>
+        <li class="flex items-start"><span class="text-orange-600 mr-3 text-xl">✓</span><span>Customer engagement campaigns</span></li>
+        <li class="flex items-start"><span class="text-orange-600 mr-3 text-xl">✓</span><span>In-store prize wheels</span></li>
+        <li class="flex items-start"><span class="text-orange-600 mr-3 text-xl">✓</span><span>Special offers and deals</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('shops'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Shop Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== INFLUENCERS PAGE ==================== -->
+   <section id="page-influencers" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-purple-50 to-violet-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">📱 YouTubers &amp; Influencers</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Engage your audience with interactive content!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Great for:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl">✓</span><span>Picking winners from comments</span></li>
+        <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl">✓</span><span>Deciding video topics</span></li>
+        <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl">✓</span><span>Live stream interactions</span></li>
+        <li class="flex items-start"><span class="text-purple-600 mr-3 text-xl">✓</span><span>Challenge selections</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('influencers'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Influencer Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== DECISION MAKING PAGE ==================== -->
+   <section id="page-decision" class="page-section">
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-cyan-50 to-teal-50">
+     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6 text-center">🧠 Decision Making</h1>
+      <p class="text-xl text-gray-600 text-center mb-12">Let the wheel decide when you can't choose!</p>
+      <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+       <h2 class="font-display text-2xl font-semibold mb-4">Decide on:</h2>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start"><span class="text-cyan-600 mr-3 text-xl">✓</span><span>Where to eat or what to cook</span></li>
+        <li class="flex items-start"><span class="text-cyan-600 mr-3 text-xl">✓</span><span>Which movie or show to watch</span></li>
+        <li class="flex items-start"><span class="text-cyan-600 mr-3 text-xl">✓</span><span>Weekend activity planning</span></li>
+        <li class="flex items-start"><span class="text-cyan-600 mr-3 text-xl">✓</span><span>Any tough choice in life!</span></li>
+       </ul>
+      </div>
+      <div class="text-center"><button onclick="playRelaxingClick(); loadTemplate('decision'); navigateTo('home'); setTimeout(() => document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'}), 100)" onmouseenter="playHoverSound()" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg"> Load Decision Template </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- ==================== HOME PAGE ==================== -->
+   <section id="page-home" class="page-section active"><!-- Hero Section -->
+    <div class="relative bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 overflow-hidden">
+     <div class="absolute inset-0 opacity-40">
+      <div class="absolute top-20 left-20 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-2xl animate-pulse"></div>
+      <div class="absolute top-40 right-20 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+     </div>
+     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-4xl mx-auto"><!-- Hero Text -->
+       <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-white rounded-full shadow-sm mb-6"><span class="text-green-500 mr-2">✓</span> <span class="text-sm text-gray-600">100% Free  No Sign-up Required</span>
+        </div>
+        <h1 id="hero-headline" class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6 px-2">Free Online <span class="gradient-text">Spin Wheel</span> for Everyone</h1>
+        <p id="hero-subtext" class="text-base sm:text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto px-4">Create custom spinning wheels for teachers, giveaways, shops, content creators, and decision-making. Fair, transparent, and fun randomization at your fingertips.</p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"><button onclick="playRelaxingClick(); document.getElementById('wheel-section').scrollIntoView({behavior: 'smooth'})" onmouseenter="playHoverSound()" class="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold text-base sm:text-lg"> 🎯 Start Spinning Now </button> <button onclick="playRelaxingClick(); navigateTo('about')" onmouseenter="playHoverSound()" class="px-6 sm:px-8 py-3 sm:py-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold text-base sm:text-lg hover:border-purple-300 hover:bg-purple-50 transition-all"> 📖 Learn More </button>
+        </div>
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm text-gray-500 px-4"><span class="flex items-center">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-1" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg> No Ads Interrupting</span> <span class="flex items-center">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-1" fill="currentColor" viewbox="0 0 20 20">
+           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg> Fair Random Algorithm</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Wheel Section -->
+    <div id="wheel-section" class="py-16 lg:py-24 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-12 px-4">
+       <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Spin the Wheel</h2>
+       <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8">Add your items, customize the wheel, and let chance decide! Our algorithm ensures truly random and fair results every time.</p><!-- Field Selector -->
+       <div class="max-w-4xl mx-auto px-2 sm:px-4">
+        <h3 class="font-semibold text-gray-900 mb-3 sm:mb-4 text-sm sm:text-base">Choose Your Use Case or Create Your Own:</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4"><button onclick="playRelaxingClick(); loadTemplate('teachers')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-blue-50 hover:bg-blue-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-blue-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           👨‍🏫
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-blue-700 text-xs sm:text-sm">
+           Teachers
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('classroom')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-green-50 hover:bg-green-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-green-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           🏫
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-green-700 text-xs sm:text-sm">
+           Classroom
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('giveaway')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-pink-50 hover:bg-pink-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-pink-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           🎁
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-pink-700 text-xs sm:text-sm">
+           Giveaways
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('shops')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-orange-50 hover:bg-orange-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-orange-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           🛍️
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-orange-700 text-xs sm:text-sm">
+           Shops
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('influencers')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-purple-50 hover:bg-purple-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-purple-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           📱
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-purple-700 text-xs sm:text-sm">
+           Content Creators
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('decision')" onmouseenter="playHoverSound()" class="p-3 sm:p-4 bg-cyan-50 hover:bg-cyan-100 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-cyan-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           🧠
+          </div>
+          <div class="font-medium text-gray-900 group-hover:text-cyan-700 text-xs sm:text-sm">
+           Decision Making
+          </div></button> <button onclick="playRelaxingClick(); loadTemplate('custom')" onmouseenter="playHoverSound()" class="col-span-2 p-3 sm:p-4 bg-gradient-to-br from-purple-50 to-indigo-100 hover:from-purple-100 hover:to-indigo-200 rounded-lg sm:rounded-xl border-2 border-transparent hover:border-purple-300 transition-all text-center group active:scale-95">
+          <div class="text-2xl sm:text-3xl mb-1 sm:mb-2">
+           ✨
+          </div>
+          <div class="font-semibold text-gray-900 group-hover:text-purple-700 text-xs sm:text-sm">
+           Create Your Own
+          </div></button>
+        </div>
+       </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-8 items-start"><!-- Wheel Controls -->
+       <div class="bg-gray-50 rounded-2xl p-6 order-2 lg:order-1">
+        <h3 class="font-display font-semibold text-lg text-gray-900 mb-4">🎨 Customize Your Wheel</h3><!-- Items List -->
+        <div class="mb-6"><label class="block text-sm font-medium text-gray-700 mb-2">Wheel Items</label>
+         <div id="items-list" class="space-y-2 max-h-64 overflow-auto mb-3"><!-- Items will be dynamically added here -->
+         </div>
+        </div><!-- Quick Add -->
+        <div class="mb-6"><label class="block text-sm font-medium text-gray-700 mb-2">Add New Item</label>
+         <div class="flex gap-2"><input type="text" id="quick-add" class="flex-1 px-4 py-2 rounded-xl border border-gray-200 text-gray-900" placeholder="Type item name..." onkeypress="if(event.key === 'Enter') { playRelaxingClick(); quickAddItem(); }"> <button onclick="playRelaxingClick(); quickAddItem()" onmouseenter="playHoverSound()" class="px-6 py-2 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors">Add</button>
+         </div>
+         <p class="text-xs text-gray-500 mt-2">💡 Emojis will be added automatically for sports, food, names, etc.</p>
+        </div><!-- Options -->
+        <div class="space-y-4"><label class="flex items-center"> <input type="checkbox" id="remove-winner" onclick="playRelaxingClick()" class="w-5 h-5 rounded text-purple-600 border-gray-300"> <span class="ml-3 text-gray-700">Remove winner after spin</span> </label> <label class="flex items-center"> <input type="checkbox" id="sound-toggle" checked onclick="playRelaxingClick()" class="w-5 h-5 rounded text-purple-600 border-gray-300"> <span class="ml-3 text-gray-700">🔊 Sound effects</span> </label>
+        </div><!-- Action Buttons -->
+        <div class="mt-6 space-y-3"><button onclick="playRelaxingClick(); resetWheel()" onmouseenter="playHoverSound()" class="w-full py-3 border border-gray-200 text-gray-600 rounded-xl font-medium hover:bg-gray-50 transition-colors"> ↺ Reset Wheel </button>
+        </div>
+       </div><!-- The Wheel -->
+       <div class="flex flex-col items-center order-1 lg:order-2">
+        <div class="wheel-container relative mb-6 sm:mb-8" style="width: min(90vw, 350px); height: min(90vw, 350px);"><!-- Pointer -->
+         <div class="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 z-10">
+          <div class="w-0 h-0 border-l-[15px] sm:border-l-[20px] border-r-[15px] sm:border-r-[20px] border-t-[25px] sm:border-t-[30px] border-l-transparent border-r-transparent border-t-purple-600" style="filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));"></div>
+         </div><!-- Wheel Canvas -->
+         <canvas id="wheel-canvas" width="350" height="350" class="cursor-pointer" style="width: 100%; height: 100%;"></canvas><!-- Center Button --> <button onclick="playRelaxingClick(); spinWheel()" onmouseenter="playHoverSound()" id="spin-btn" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white font-bold text-base sm:text-lg shadow-xl hover:scale-105 transition-transform pulse-glow"> SPIN </button>
+        </div><!-- Result Display -->
+        <div id="result-display" class="hidden w-full max-w-sm">
+         <div class="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 text-white text-center">
+          <p class="text-sm opacity-80 mb-2">🎉 Winner!</p>
+          <p id="winner-text" class="text-2xl font-bold"></p><button onclick="playRelaxingClick(); shareResult()" onmouseenter="playHoverSound()" class="mt-4 px-6 py-2 bg-white/20 rounded-lg text-sm font-medium hover:bg-white/30 transition-colors"> 📤 Share Result </button>
+         </div>
+        </div><!-- Action Buttons -->
+        <div class="mt-4 flex gap-3 justify-center"><button onclick="playRelaxingClick(); shareWheel()" onmouseenter="playHoverSound()" class="px-6 py-2 text-gray-600 hover:text-gray-900 font-medium flex items-center hover:bg-gray-100 rounded-lg transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+          </svg> Share </button>
+        </div>
+       </div><!-- History & Stats -->
+       <div class="bg-gray-50 rounded-2xl p-6 order-3">
+        <h3 class="font-display font-semibold text-lg text-gray-900 mb-4">📊 Spin History</h3>
+        <div id="spin-history" class="space-y-2 mb-6 max-h-64 overflow-auto">
+         <p class="text-gray-500 text-sm">No spins yet. Click SPIN to start!</p>
+        </div>
+        <div class="border-t pt-4">
+         <h4 class="font-medium text-gray-900 mb-3">Statistics</h4>
+         <div class="grid grid-cols-2 gap-4 text-center">
+          <div class="bg-white rounded-xl p-3">
+           <p id="total-spins" class="text-2xl font-bold text-purple-600">0</p>
+           <p class="text-xs text-gray-500">Total Spins</p>
+          </div>
+          <div class="bg-white rounded-xl p-3">
+           <p id="unique-winners" class="text-2xl font-bold text-indigo-600">0</p>
+           <p class="text-xs text-gray-500">Unique Winners</p>
+          </div>
+         </div>
+        </div><button onclick="playRelaxingClick(); clearHistory()" onmouseenter="playHoverSound()" class="mt-4 w-full py-2 text-sm text-gray-500 hover:text-gray-700"> Clear History </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- How It Works Section -->
+    <div class="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+       <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How Spin For Win Works</h2>
+       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our spinning wheel is designed to be simple, fair, and incredibly useful for a variety of purposes.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+       <div class="bg-white rounded-2xl p-8 card-hover text-center">
+        <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><span class="text-3xl">✏️</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">1. Add Your Items</h3>
+        <p class="text-gray-600">Enter names, options, prizes, or anything you want to randomize. Add as many items as you need—there's no limit!</p>
+       </div>
+       <div class="bg-white rounded-2xl p-8 card-hover text-center">
+        <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><span class="text-3xl">🎨</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">2. Customize Settings</h3>
+        <p class="text-gray-600">Choose whether to remove winners, enable sound effects, and adjust other settings to match your needs.</p>
+       </div>
+       <div class="bg-white rounded-2xl p-8 card-hover text-center">
+        <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"><span class="text-3xl">🎯</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">3. Spin &amp; Get Results</h3>
+        <p class="text-gray-600">Click the spin button and watch the wheel decide! Results are completely random and transparent.</p>
+       </div>
+      </div>
+     </div>
+    </div><!-- Use Cases Grid -->
+    <div class="py-16 lg:py-24 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+       <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Perfect For Every Situation</h2>
+       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover how thousands of people use Spin For Win to make decisions, engage audiences, and add excitement to any activity.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><a href="#" onclick="playRelaxingClick(); navigateTo('teachers')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 card-hover border border-transparent hover:border-blue-200">
+        <div class="text-4xl mb-4">
+         👨‍🏫
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Teachers &amp; Educators</h3><p class="text-gray-600 text-sm">Pick students for activities, assign groups, or make learning interactive and fun.</p></a> <a href="#" onclick="playRelaxingClick(); navigateTo('classroom')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 card-hover border border-transparent hover:border-green-200">
+        <div class="text-4xl mb-4">
+         🏫
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">Classroom Activities</h3><p class="text-gray-600 text-sm">Engage students with interactive games, quizzes, and random selection activities.</p></a> <a href="#" onclick="playRelaxingClick(); navigateTo('giveaways')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 card-hover border border-transparent hover:border-pink-200">
+        <div class="text-4xl mb-4">
+         🎁
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-pink-600 transition-colors">Giveaways &amp; Contests</h3><p class="text-gray-600 text-sm">Run fair and exciting prize drawings that your audience will love.</p></a> <a href="#" onclick="playRelaxingClick(); navigateTo('shops')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 card-hover border border-transparent hover:border-orange-200">
+        <div class="text-4xl mb-4">
+         🛍️
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">Shops &amp; Promotions</h3><p class="text-gray-600 text-sm">Create engaging discount wheels and promotional campaigns for customers.</p></a> <a href="#" onclick="playRelaxingClick(); navigateTo('influencers')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 card-hover border border-transparent hover:border-purple-200">
+        <div class="text-4xl mb-4">
+         📱
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">YouTubers &amp; Influencers</h3><p class="text-gray-600 text-sm">Pick winners from comments, decide video topics, or create interactive content.</p></a> <a href="#" onclick="playRelaxingClick(); navigateTo('decision')" onmouseenter="playHoverSound()" class="group bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-6 card-hover border border-transparent hover:border-cyan-200">
+        <div class="text-4xl mb-4">
+         🧠
+        </div><h3 class="font-display text-xl font-semibold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Decision Making</h3><p class="text-gray-600 text-sm">Let the wheel decide when you can't choose—restaurants, movies, activities, and more.</p></a>
+      </div>
+     </div>
+    </div><!-- Features Section -->
+    <div class="py-16 lg:py-24 bg-gray-50">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+       <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Powerful Features, Zero Cost</h2>
+       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Everything you need for the perfect spinning wheel experience—completely free, forever.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         🎲
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">True Randomness</h4>
+        <p class="text-sm text-gray-600">Cryptographically secure random selection you can trust.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         🔊
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Sound Effects</h4>
+        <p class="text-sm text-gray-600">Satisfying audio feedback for an immersive experience.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         📱
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Works Everywhere</h4>
+        <p class="text-sm text-gray-600">Fully responsive on phones, tablets, and desktops.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         ⚡
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Lightning Fast</h4>
+        <p class="text-sm text-gray-600">Optimized for speed—no loading or waiting.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         🎨
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Beautiful Design</h4>
+        <p class="text-sm text-gray-600">Visually stunning wheel that looks great on screen.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         📊
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Spin History</h4>
+        <p class="text-sm text-gray-600">Track all your spins and see statistics.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         🔒
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Privacy First</h4>
+        <p class="text-sm text-gray-600">Your data stays in your browser—we don't store it.</p>
+       </div>
+       <div class="bg-white rounded-xl p-6 text-center">
+        <div class="text-3xl mb-3">
+         ♾️
+        </div>
+        <h4 class="font-semibold text-gray-900 mb-2">Unlimited Use</h4>
+        <p class="text-sm text-gray-600">Spin as many times as you want, forever free.</p>
+       </div>
+      </div>
+     </div>
+    </div><!-- FAQ Section -->
+    <div class="py-16 lg:py-24 bg-white">
+     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+       <h2 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+       <p class="text-lg text-gray-600">Everything you need to know about Spin For Win</p>
+      </div>
+      <div class="space-y-4" id="faq-home">
+       <div class="bg-gray-50 rounded-xl overflow-hidden"><button onclick="playRelaxingClick(); toggleFaq(this)" onmouseenter="playHoverSound()" class="w-full px-6 py-4 text-left flex items-center justify-between"> <span class="font-medium text-gray-900">Is Spin For Win really free?</span>
+         <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="faq-answer px-6 pb-4">
+         <p class="text-gray-600">Yes, absolutely! Spin For Win is 100% free to use with no hidden costs, subscriptions, or premium features locked behind paywalls. We believe everyone should have access to a fair and functional random selection tool.</p>
+        </div>
+       </div>
+       <div class="bg-gray-50 rounded-xl overflow-hidden"><button onclick="playRelaxingClick(); toggleFaq(this)" onmouseenter="playHoverSound()" class="w-full px-6 py-4 text-left flex items-center justify-between"> <span class="font-medium text-gray-900">How does the randomization work?</span>
+         <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="faq-answer px-6 pb-4">
+         <p class="text-gray-600">Our wheel uses JavaScript's Math.random() function combined with additional entropy to ensure fair and unpredictable results. Each segment has an equal probability of being selected, making every spin truly random and unbiased.</p>
+        </div>
+       </div>
+       <div class="bg-gray-50 rounded-xl overflow-hidden"><button onclick="playRelaxingClick(); toggleFaq(this)" onmouseenter="playHoverSound()" class="w-full px-6 py-4 text-left flex items-center justify-between"> <span class="font-medium text-gray-900">Do I need to create an account?</span>
+         <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="faq-answer px-6 pb-4">
+         <p class="text-gray-600">No account is required! Simply visit the website, add your items, and start spinning immediately. We respect your privacy and don't require any personal information to use our tool.</p>
+        </div>
+       </div>
+       <div class="bg-gray-50 rounded-xl overflow-hidden"><button onclick="playRelaxingClick(); toggleFaq(this)" onmouseenter="playHoverSound()" class="w-full px-6 py-4 text-left flex items-center justify-between"> <span class="font-medium text-gray-900">Can I use this for commercial giveaways?</span>
+         <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="faq-answer px-6 pb-4">
+         <p class="text-gray-600">Yes! Many businesses, content creators, and organizations use Spin For Win for legitimate promotional giveaways and contests. Our tool provides fair, transparent randomization that audiences trust.</p>
+        </div>
+       </div>
+       <div class="bg-gray-50 rounded-xl overflow-hidden"><button onclick="playRelaxingClick(); toggleFaq(this)" onmouseenter="playHoverSound()" class="w-full px-6 py-4 text-left flex items-center justify-between"> <span class="font-medium text-gray-900">Is my data saved anywhere?</span>
+         <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+         </svg></button>
+        <div class="faq-answer px-6 pb-4">
+         <p class="text-gray-600">Your wheel data stays entirely in your browser and is not transmitted to our servers. When you close or refresh the page, the data is cleared unless you manually save it. Your privacy is our priority.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Share Section -->
+   <section class="py-12 sm:py-16 bg-gradient-to-br from-purple-500 to-indigo-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+     <div class="bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/20">
+      <div class="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6">
+       🌀
+      </div>
+      <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 px-2">❤️ Love Spin For Win?</h2>
+      <p class="text-white/90 text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto px-2">Share this amazing free spin wheel with your friends, colleagues, and community!</p><button onclick="playRelaxingClick(); shareWebsite()" onmouseenter="playHoverSound()" class="group inline-flex items-center justify-center px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 bg-white text-purple-600 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-purple-300">
+       <svg class="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+       </svg> Share Spin For Win </button>
+      <p class="text-white/70 text-xs sm:text-sm mt-4 sm:mt-6 px-2">Share on WhatsApp, Facebook, Twitter, Email &amp; More!</p>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+       <div class="flex items-center space-x-2 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center"><span class="text-white text-xl">🌀</span>
+        </div><span class="font-display font-bold text-xl">Spin For Win</span>
+       </div>
+       <p class="text-gray-400 text-sm">Free online spinning wheel for random selection, giveaways, and decision making. Fair, fun, and easy to use.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Use Cases</h4>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('teachers')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">👨‍🏫 Teachers</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('classroom')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">🏫 Classroom</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('giveaways')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">🎁 Giveaways</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('shops')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">🛍️ Shops</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('influencers')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">📱 Influencers</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('decision')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">🧠 Decision Making</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Tools</h4>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('home')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">Spin Wheel</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('name-picker')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">Name Picker</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-4">Company</h4>
+       <ul class="space-y-2 text-sm">
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('about')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('contact')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('privacy')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="#" onclick="playRelaxingClick(); navigateTo('terms')" onmouseenter="playHoverSound()" class="text-gray-400 hover:text-white transition-colors">Terms &amp; Conditions</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm">© 2025 Spin For Win. All rights reserved.</p>
+      <p class="text-gray-500 text-xs mt-2 sm:mt-0">Made with ❤️ for fair randomness</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      site_title: 'Spin For Win',
+      hero_headline: 'Free Online Spin Wheel for Everyone',
+      hero_subtext: 'Create custom spinning wheels for teachers, giveaways, shops, content creators, and decision-making. Fair, transparent, and fun randomization at your fingertips.'
+    };
+
+    let config = { ...defaultConfig };
+    let wheelItems = ['Pizza 🍕', 'Burger 🍔', 'Sushi 🍣', 'Tacos 🌮', 'Pasta 🍝', 'Salad 🥗'];
+    let isSpinning = false;
+    let currentRotation = 0;
+    let spinHistory = [];
+    let totalSpins = 0;
+    let uniqueWinners = new Set();
+
+    const wheelColors = [
+      '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe',
+      '#43e97b', '#38f9d7', '#fa709a', '#fee140', '#a8edea', '#fed6e3'
+    ];
+
+    let audioContext = null;
+
+    function initAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playClickSound() {
+      initAudio();
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.type = 'sine';
+      osc.frequency.value = 800;
+      gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+      osc.start();
+      osc.stop(audioContext.currentTime + 0.1);
+    }
+
+    function playTick() {
+      if (!document.getElementById('sound-toggle').checked) return;
+      initAudio();
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.frequency.value = 800 + Math.random() * 200;
+      gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+      osc.start();
+      osc.stop(audioContext.currentTime + 0.05);
+    }
+
+    function playWin() {
+      if (!document.getElementById('sound-toggle').checked) return;
+      initAudio();
+      const notes = [523, 659, 784, 1047];
+      notes.forEach((freq, i) => {
+        setTimeout(() => {
+          const osc = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+          osc.connect(gain);
+          gain.connect(audioContext.destination);
+          osc.frequency.value = freq;
+          osc.type = 'sine';
+          gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+          osc.start();
+          osc.stop(audioContext.currentTime + 0.3);
+        }, i * 100);
+      });
+    }
+
+    function playRelaxingClick() {
+      const soundToggle = document.getElementById('sound-toggle');
+      if (!soundToggle || !soundToggle.checked) return;
+      
+      initAudio();
+      
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      
+      osc.type = 'sine';
+      osc.frequency.value = 880;
+      
+      gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+      
+      osc.start(audioContext.currentTime);
+      osc.stop(audioContext.currentTime + 0.15);
+    }
+
+    function playHoverSound() {
+      const soundToggle = document.getElementById('sound-toggle');
+      if (!soundToggle || !soundToggle.checked) return;
+      
+      initAudio();
+      
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      
+      osc.type = 'sine';
+      osc.frequency.value = 1200;
+      
+      gain.gain.setValueAtTime(0.03, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.08);
+      
+      osc.start(audioContext.currentTime);
+      osc.stop(audioContext.currentTime + 0.08);
+    }
+
+    function addEmojiToText(text) {
+      if (/[\u{1F300}-\u{1F9FF}]/u.test(text)) return text;
+      
+      const lowerText = text.toLowerCase().trim();
+      const emojiMap = {
+        'cricket': '🏏', 'football': '🏈', 'soccer': '⚽', 'basketball': '🏀', 'tennis': '🎾',
+        'pizza': '🍕', 'burger': '🍔', 'sushi': '🍣', 'taco': '🌮', 'pasta': '🍝', 'salad': '🥗',
+        'boy': '👦', 'girl': '👧', 'man': '👨', 'woman': '👩', 'student': '🎓'
+      };
+      
+      for (let [keyword, emoji] of Object.entries(emojiMap)) {
+        if (lowerText.includes(keyword)) {
+          return `${text} ${emoji}`;
+        }
+      }
+      
+      const maleNames = ['john', 'david', 'michael', 'james', 'robert', 'liam', 'noah', 'ethan', 'mason', 'lucas'];
+      if (maleNames.some(name => lowerText.includes(name))) return `${text} 👦`;
+      
+      const femaleNames = ['mary', 'sarah', 'emily', 'emma', 'olivia', 'ava', 'sophia', 'isabella'];
+      if (femaleNames.some(name => lowerText.includes(name))) return `${text} 👧`;
+      
+      return text;
+    }
+
+    function drawWheel() {
+      const canvas = document.getElementById('wheel-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const radius = Math.min(centerX, centerY) - 10;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (wheelItems.length === 0) {
+        ctx.fillStyle = '#e5e7eb';
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = '#6b7280';
+        ctx.font = '16px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText('Add items to spin!', centerX, centerY);
+        return;
+      }
+
+      const sliceAngle = (2 * Math.PI) / wheelItems.length;
+
+      wheelItems.forEach((item, i) => {
+        const startAngle = i * sliceAngle + (currentRotation * Math.PI / 180);
+        const endAngle = startAngle + sliceAngle;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fillStyle = wheelColors[i % wheelColors.length];
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(startAngle + sliceAngle / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 14px Inter';
+        const maxLength = 12;
+        const displayText = item.length > maxLength ? item.substring(0, maxLength) + '...' : item;
+        ctx.fillText(displayText, radius - 20, 5);
+        ctx.restore();
+      });
+
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 35, 0, 2 * Math.PI);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+    }
+
+    function spinWheel() {
+      if (isSpinning || wheelItems.length === 0) return;
+
+      isSpinning = true;
+      const spinBtn = document.getElementById('spin-btn');
+      spinBtn.disabled = true;
+      spinBtn.textContent = '...';
+
+      const extraSpins = 5 + Math.random() * 5;
+      const randomDegrees = Math.random() * 360;
+      const totalDegrees = currentRotation + (extraSpins * 360) + randomDegrees;
+      const duration = 4000 + Math.random() * 2000;
+
+      let startTime = null;
+      let lastTickTime = 0;
+
+      function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const easeOut = 1 - Math.pow(1 - progress, 4);
+        currentRotation = (currentRotation + (totalDegrees - currentRotation) * easeOut) % 360;
+        
+        if (timestamp - lastTickTime > 50 / (1 - progress + 0.1)) {
+          playTick();
+          lastTickTime = timestamp;
+        }
+
+        drawWheel();
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          currentRotation = totalDegrees % 360;
+          finishSpin();
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function finishSpin() {
+      isSpinning = false;
+      const spinBtn = document.getElementById('spin-btn');
+      spinBtn.disabled = false;
+      spinBtn.textContent = 'SPIN';
+
+      const sliceAngle = 360 / wheelItems.length;
+      const adjustedRotation = (currentRotation + 90) % 360;
+      const winnerIndex = Math.floor((360 - adjustedRotation) / sliceAngle) % wheelItems.length;
+      const winner = wheelItems[winnerIndex];
+
+      totalSpins++;
+      uniqueWinners.add(winner);
+      spinHistory.unshift({ winner, time: new Date() });
+      if (spinHistory.length > 10) spinHistory.pop();
+
+      playWin();
+      document.getElementById('winner-text').textContent = winner;
+      document.getElementById('result-display').classList.remove('hidden');
+
+      updateHistoryDisplay();
+
+      if (document.getElementById('remove-winner').checked) {
+        wheelItems = wheelItems.filter((_, i) => i !== winnerIndex);
+        renderItemsList();
+        setTimeout(drawWheel, 500);
+      }
+    }
+
+    function updateHistoryDisplay() {
+      const historyEl = document.getElementById('spin-history');
+      if (spinHistory.length === 0) {
+        historyEl.innerHTML = '<p class="text-gray-500 text-sm">No spins yet. Click SPIN to start!</p>';
+      } else {
+        historyEl.innerHTML = spinHistory.map((s, i) => `
+          <div class="flex items-center justify-between py-2 px-3 bg-white rounded-lg ${i === 0 ? 'ring-2 ring-purple-200' : ''}">
+            <span class="text-gray-900 font-medium text-sm">${s.winner}</span>
+            <span class="text-gray-400 text-xs">${i === 0 ? 'Latest' : ''}</span>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('total-spins').textContent = totalSpins;
+      document.getElementById('unique-winners').textContent = uniqueWinners.size;
+    }
+
+    function renderItemsList() {
+      const listEl = document.getElementById('items-list');
+      if (wheelItems.length === 0) {
+        listEl.innerHTML = '<p class="text-gray-400 text-sm text-center py-4">No items yet. Add items below!</p>';
+        return;
+      }
+      
+      listEl.innerHTML = wheelItems.map((item, index) => `
+        <div class="flex items-center justify-between bg-white border border-gray-200 rounded-lg px-3 py-2 hover:border-purple-300 transition-colors">
+          <span class="text-gray-900 text-sm flex-1">${item}</span>
+          <button onclick="playRelaxingClick(); removeItem(${index})" onmouseenter="playHoverSound()" class="ml-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded p-1 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function removeItem(index) {
+      wheelItems.splice(index, 1);
+      renderItemsList();
+      document.getElementById('result-display').classList.add('hidden');
+      drawWheel();
+    }
+
+    function quickAddItem() {
+      const input = document.getElementById('quick-add');
+      let value = input.value.trim();
+      if (value) {
+        value = addEmojiToText(value);
+        wheelItems.push(value);
+        renderItemsList();
+        input.value = '';
+        document.getElementById('result-display').classList.add('hidden');
+        drawWheel();
+      }
+    }
+
+    function resetWheel() {
+      wheelItems = ['Pizza 🍕', 'Burger 🍔', 'Sushi 🍣', 'Tacos 🌮', 'Pasta 🍝', 'Salad 🥗'];
+      renderItemsList();
+      document.getElementById('result-display').classList.add('hidden');
+      currentRotation = 0;
+      drawWheel();
+    }
+
+    function loadTemplate(type) {
+      switch(type) {
+        case 'teachers':
+          wheelItems = ['Test Day 📝', 'Viva Day 🎤', 'Play Day 🎮', 'Story Day 📚', 'Art Day ��', 'Sports Day ⚽', 'Music Day 🎵', 'Science Day 🔬'];
+          break;
+        case 'classroom':
+          wheelItems = ['Group A 📘', 'Group B 📗', 'Group C 📙', 'Group D 📕', 'Partner Work 👥', 'Solo Activity 🎯'];
+          break;
+        case 'giveaway':
+          wheelItems = ['Winner 1 🏆', 'Winner 2 🥈', 'Winner 3 🥉', 'Consolation Prize 🎁', 'Try Again 🔄', 'Bonus Entry ⭐'];
+          break;
+        case 'shops':
+          wheelItems = ['10% OFF 💰', '20% OFF 🤑', 'Free Shipping 📦', 'Buy 1 Get 1 🎁', '5% OFF 💵', 'Mystery Gift 🎉'];
+          break;
+        case 'influencers':
+          wheelItems = ['Gaming Stream 🎮', 'Q&A Session 💬', 'Challenge Video 🎬', 'Vlog Day 📹', 'Collaboration 🤝', 'Tutorial 📚', 'Reaction Video 😮', 'Live Giveaway 🎁'];
+          break;
+        case 'decision':
+          wheelItems = ['Movie Night 🎬', 'Game Night 🎮', 'Restaurant 🍽️', 'Park Visit 🌳', 'Stay Home 🏠', 'Shopping 🛍️'];
+          break;
+        case 'custom':
+          wheelItems = [];
+          break;
+      }
+      renderItemsList();
+      document.getElementById('result-display').classList.add('hidden');
+      currentRotation = 0;
+      drawWheel();
+    }
+
+    function clearHistory() {
+      spinHistory = [];
+      totalSpins = 0;
+      uniqueWinners.clear();
+      updateHistoryDisplay();
+    }
+
+    function shareWheel() {
+      const shareData = {
+        title: 'Spin For Win',
+        text: 'Check out this amazing Spin Wheel! Free online spinner for random selection, giveaways, and decision making.',
+        url: window.location.href
+      };
+      
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        const btn = event.target.closest('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Link Copied!';
+        setTimeout(() => btn.innerHTML = originalText, 2000);
+      }
+    }
+
+    function shareWebsite() {
+      const currentUrl = window.location.href;
+      const shareTitle = 'Spin For Win - Free Online Spin Wheel';
+      const shareText = 'Check out Spin For Win! Free online spinner for teachers, giveaways, decision making & more. 100% free, no sign-up required!';
+      
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: currentUrl
+        }).then(() => {
+          console.log('Shared successfully');
+        }).catch((error) => {
+          console.log('Share cancelled or failed:', error);
+          fallbackCopyLink();
+        });
+      } else {
+        fallbackCopyLink();
+      }
+    }
+
+    function fallbackCopyLink() {
+      const currentUrl = window.location.href;
+      const tempInput = document.createElement('input');
+      tempInput.value = currentUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999);
+      
+      try {
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = '✓ Link Copied to Clipboard!';
+        messageDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#10b981;color:white;padding:20px 40px;border-radius:12px;font-weight:bold;z-index:10000;box-shadow:0 10px 40px rgba(0,0,0,0.3);font-size:18px;';
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 2500);
+      } catch (err) {
+        document.body.removeChild(tempInput);
+        alert('Please copy this link: ' + currentUrl);
+      }
+    }
+
+    function shareResult() {
+      const winner = document.getElementById('winner-text').textContent;
+      const text = `🎉 Spin For Win picked: ${winner}!`;
+      if (navigator.share) {
+        navigator.share({ text });
+      } else {
+        navigator.clipboard.writeText(text);
+        const btn = event.target;
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => btn.textContent = '📤 Share Result', 2000);
+      }
+    }
+
+    function navigateTo(page) {
+      document.querySelectorAll('.page-section').forEach(el => {
+        el.classList.remove('active');
+      });
+      const targetPage = document.getElementById('page-' + page);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+      document.getElementById('app').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    function toggleFaq(button) {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      answer.classList.toggle('open');
+      icon.style.transform = answer.classList.contains('open') ? 'rotate(180deg)' : '';
+    }
+
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      
+      const siteTitle = document.getElementById('site-title');
+      if (siteTitle) siteTitle.textContent = config.site_title || defaultConfig.site_title;
+      
+      const heroHeadline = document.getElementById('hero-headline');
+      if (heroHeadline) {
+        heroHeadline.innerHTML = (config.hero_headline || defaultConfig.hero_headline).replace('Spin Wheel', '<span class="gradient-text">Spin Wheel</span>');
+      }
+      
+      const heroSubtext = document.getElementById('hero-subtext');
+      if (heroSubtext) heroSubtext.textContent = config.hero_subtext || defaultConfig.hero_subtext;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['site_title', config.site_title || defaultConfig.site_title],
+        ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+        ['hero_subtext', config.hero_subtext || defaultConfig.hero_subtext]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    renderItemsList();
+    drawWheel();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c80aaa8f38e7f55',t:'MTc3MDEwODQ3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
